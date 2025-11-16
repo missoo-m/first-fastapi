@@ -1,5 +1,5 @@
-from sqlalcemy import Column, Ineger, String
-from sqlalcemy.orm import relationship
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
 from ..database import Base
 
 class Category(Base):

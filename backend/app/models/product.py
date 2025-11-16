@@ -1,5 +1,6 @@
-from sqlalcemy import Column, Ineger, String
-from sqlalcemy.orm import relationship
+from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String, Text, Float, DateTime, ForeignKey
+from datetime import datetime as datetime 
 from ..database import Base
 
 class Product(Base):
@@ -12,7 +13,6 @@ class Product(Base):
     category_id=Column(Integer, ForeignKey("categories.id"), nullable= False)
     image_url=Column(String)
     created_at=Column(DateTime, default=datetime.utcnow)
-
 
 
     products= relationship( "Category", back_populatest = "products")

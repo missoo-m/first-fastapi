@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from typing import List
-from ..schemas.category import CategoryCreate, CategoryResponse
+from ..schemas.category import CategoryResponse
 from ..database import get_db
 from ..services.category_service import CategoryService 
 from fastapi import APIRouter, Depends, status

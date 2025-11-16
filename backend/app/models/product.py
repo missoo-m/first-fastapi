@@ -4,7 +4,7 @@ from datetime import datetime as datetime
 from ..database import Base
 
 class Product(Base):
-    __tablename__ = "categories"
+    __tablename__ = "products"
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable= False, index= True)
@@ -15,7 +15,7 @@ class Product(Base):
     created_at=Column(DateTime, default=datetime.utcnow)
 
 
-    products= relationship( "Category", back_populatest = "products")
+    products= relationship( "Category", back_populates= "products")
 
     def __repr__(self):
         return f"<Product(id={self.id}, name='{self.name}', price={self.price})>"

@@ -6,7 +6,7 @@ from ..repositories.category_repositirie import CategoryRepository
 from fastapi import HTTPException, status
 
 
-class CategoryService:
+class ProductService:
     def __init__(self, db: Session):
         self.category_repository = CategoryRepository(db)
         self.product_repository = ProductRepository(db)
@@ -39,7 +39,7 @@ class CategoryService:
         return ProductListResponse(products = products_response, total=len(products_response))
 
 
-    def create_category(self, product_data: ProductCreate) -> ProductResponse:
+    def create_product(self, product_data: ProductCreate) -> ProductResponse:
         category = self.category_repository.get_by_id(product_data.category_id)
         if not category:
             raise HTTPException(

@@ -11,11 +11,11 @@ services:
       - ./backend:/app
       - backend_static:/app/static
     environment:
-      - APP_NAME=${APP_NAME:-FastAPI Shop}
-      - DEBUG=${DEBUG:-False}
+      - APP_NAME=FastAPI Shop
+      - DEBUG=False
       - DATABASE_URL=sqlite:///./shop.db
-      - CORS_ORIGINS=https://${DOMAIN},https://www.${DOMAIN}
-    expose:
+      - CORS_ORIGINS=http://localhost:5173
+    ports:
       - "8000:8000"
     restart: unless-stopped
     networks:
@@ -26,12 +26,15 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        - VITE_API_BASE_URL=https://${DOMAIN}/api
+        - VITE_API_BASE_URL=http://localhost:8000/api
     container_name: fashop_frontend
     depends_on:
       - backend
-    expose:
-      - "8080:80"
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
     restart: unless-stopped
     networks:
       - fashop_network

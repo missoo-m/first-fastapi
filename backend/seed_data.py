@@ -1,9 +1,3 @@
-# backend/seed_data.py
-"""
-Скрипт для заполнения базы данных тестовыми данными.
-Создает категории и товары для демонстрации работы приложения.
-Использует placeholder изображения с unsplash.com.
-"""
 
 from app.database import SessionLocal, init_db
 from app.models.category import Category
